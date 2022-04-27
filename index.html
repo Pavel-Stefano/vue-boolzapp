@@ -16,8 +16,9 @@
         </header>
 
         <main>
-            <div id="main-container-content" class="debug">
+            <div id="main-container-content" class="">
 
+                <!-- CONTENT LEFT  -->
                 <div class="content-left">
                     <div class="header-content-left">
                         <div class="header-content-left-image">
@@ -29,22 +30,24 @@
                             <i class="fa-solid fa-message"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
-
                     </div>
+
+                    <!-- MAIN CONTENT LEFT -->
                     <div class="main-content-left">
                         <div class="main-nav-content">
+
+                            <!-- NAV TOP -->
                             <div class="nav-top padding-lateral">
                                 <div class="icon-container padding-lateral">
                                     <div class="icon">
                                         <i class="fa-solid fa-bell-slash"></i>
                                     </div>
-                                    
                                 </div>
                                 <div class="text">
                                     <h3>Ricevi notifiche di nuovi messaggi</h3>
                                     <a href="#">Attiva notifiche desktop</a>
                                 </div>
-
+                                <!-- NAV DOWN  -->
                             </div>
                             <div class="nav-down">
                                 <div class="input-left">
@@ -58,17 +61,19 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- WRAPPER CONTACTS -->
                         <div class="main-wrapper-content">
                             <!-- template statico -->
                             <div class="contacts">
 
-                                <div class="item-contact padding-lateral debug">
+                                <div v-for="(contact,index) in contacts" class="item-contact padding-lateral" :key="index" :class="{'active': currentIndex === index}" @click="selectChat(index)">
                                     <div class="item-image">
-                                        <img src="img/avatar_1.jpg" alt="">
+                                        <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="">
                                     </div>
                                     <div class="item-profile">
                                         <div class="profile-name">
-                                            <h3>Michele</h3>
+                                            <h3>{{contact.name}}</h3>
                                         </div>
                                         <div class="profile-message">
                                             <span>Ultimo messaggio inviato</span>
@@ -77,40 +82,24 @@
                                     <div class="profile-time">
                                         12.00
                                     </div>
-                                </div>
-
-                                <div class="item-contact padding-lateral debug">
-                                    <div class="item-image">
-                                        <img src="img/avatar_1.jpg" alt="">
-                                    </div>
-                                    <div class="item-profile">
-                                        <div class="profile-name">
-                                            <h3>Michele</h3>
-                                        </div>
-                                        <div class="profile-message">
-                                            <span>Ultimo messaggio inviato</span>
-                                        </div>
-                                    </div>
-                                    <div class="profile-time">
-                                        12.00
-                                    </div>
-                                </div>
-
-                             
+                                </div>             
                             </div>  
-
                         </div>
-                        
-                    </div>
-
+                    </div>                     
                 </div>
+                <!-- //CONTENT LEFT //-->
+
+
+                            <!-- CONTENT RIGHT -->
                 <div class="content-right" style="border-left: 1px solid grey;">
                     <div class="header-content-right">
                         <div class="header-content-right-image">
                             <img src="img/avatar_1.jpg" alt="">
                             <div class="profile-name">
                                 <div class="name">Sonia</div>
-                                <div class="ultimo-accesso"><span>ultimo accesso</span></div>
+                                <div class="ultimo-accesso">
+                                    <span>ultimo accesso oggi alle 12.00</span>
+                                </div>
                             </div>
                         </div>
                         <div class="icon-header">
@@ -119,28 +108,34 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
+
+                    <!-- MAIN CONTENT MESSAGE -->
                     <div class="main-content-right">
-                        
+                            <div class="messaggio" v-for="(item, index) in contacts[currentIndex].messages" :key="index" :class="item.status === 'sent' ? 'messaggio-inviato' : 'messaggio-ricevuto'">
+                                <span>{{item.message}}</span>
+                            </div>
                     </div>
+
+                    <!-- FOOTER RIGHT -->
                     <div class="content-right-footer">
                         <div class="icon-footer">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
                         <div class="input-footer">
-                            <input type="text" placeholder="Scrivi messaggio">
+                            <input type="text" placeholder="Scrivi messaggio" v-model="message" @keyup.enter="inviaMessaggio()">
                         </div>
                         <div class="icon-footer">
                             <i class="fa-solid fa-microphone"></i>
-                        </div>
-                        
+                        </div>    
                     </div>
-
                 </div>
-
+                <!-- // CONTENT RIGHT // -->
 
             </div>
+            <!-- // MAIN CONTAINER // -->
         </main>
     </div>
+    <!-- // APP // -->
 
     <script src="script/script.js"></script>
 </body>
