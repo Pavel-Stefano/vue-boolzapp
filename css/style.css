@@ -217,12 +217,12 @@ main #main-container-content {
     background-color: white;
 }
 
-.messaggio::after{
+/* .messaggio::after{
     content: "\f00c";
     float: right;
     position: relative;
     top: 10px;
-}
+} */
 
 .messaggio-ricevuto {
     float: left;
@@ -235,6 +235,14 @@ main #main-container-content {
     clear: both;
     background-color: aqua;
 }
+
+.messaggio span.date {
+    float: right;
+    position: relative;
+    top: 10px;
+    margin-left: 10px;
+}
+
 
 /* FOOTER */
 

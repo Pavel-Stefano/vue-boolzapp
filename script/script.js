@@ -14,7 +14,7 @@ const app = new Vue({
                     },
                     {
                         date: '10/01/2020 15:50:00',
-                        message: 'Hai portato a spasso ilRicordati di stendere i panni',
+                        message: 'Ricordati di stendere i panni',
                         status: 'sent'
                     },
                     {
@@ -172,14 +172,14 @@ const app = new Vue({
         },
         inviaMessaggio(){
             const newMessagge = {
-                date: '10/01/2020 15:50:00',
+                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         message: this.message,
                         status: 'sent'
             }
             this.contacts[this.currentIndex].messages.push(newMessagge);
             this.message = '';
             const rispostaMessage = {
-                date: '10/01/2020 15:50:00',
+                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                 message: 'ok',
                 status: 'received'
             }
