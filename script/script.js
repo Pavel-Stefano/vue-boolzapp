@@ -3,6 +3,7 @@ const app = new Vue({
     data: {
         contacts: [
             {
+                id:1,
                 name: 'Michele',
                 avatar: '_1',
                 visible: 'true',
@@ -25,6 +26,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:2,
                 name: 'Fabio',
                 avatar: '_2',
                 visible: 'true',
@@ -47,6 +49,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:3,
                 name: 'Sammuele',
                 avatar: '_3',
                 visible: 'true',
@@ -69,6 +72,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:4,
                 name: 'Alessandro B.',
                 avatar: '_4',
                 visible: 'true',
@@ -86,6 +90,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:5,
                 name: 'Alessandro L.',
                 avatar: '_5',
                 visible: 'true',
@@ -103,6 +108,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:6,
                 name: 'Claudia',
                 avatar: '_6',
                 visible: 'true',
@@ -125,6 +131,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:7,
                 name: 'Federico',
                 avatar: '_7',
                 visible: 'true',
@@ -142,6 +149,7 @@ const app = new Vue({
                 ],
             },
             {
+                id:8,
                 name: 'Davide',
                 avatar: '_8',
                 visible: 'true',
@@ -165,12 +173,17 @@ const app = new Vue({
             },
         ],
         currentIndex : 0,
+        searchText: '',
     },
     methods:{
-        selectChat(index){
+        selectChat(id){
+            const index = this.contacts.findIndex((contact)=> {
+                return contact.id === id;
+            })
             this.currentIndex = index;
         },
         inviaMessaggio(){
+            if(this.message === '' || ' ') return
             const newMessagge = {
                 date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         message: this.message,
@@ -187,6 +200,19 @@ const app = new Vue({
                 this.contacts[this.currentIndex].messages.push(rispostaMessage);
             }, 2000)
 
+        }
+    },
+    computed: {
+        contattiFiltrati(){
+            return this.contacts.filter((contact)=> {
+                if(contact.name.toLowerCase().includes(this.searchText.toLowerCase())){
+                    return true
+                }
+                else {
+                    return false
+                }
+                
+            })
         }
     }
 })

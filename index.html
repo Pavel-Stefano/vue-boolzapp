@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="input-right">
-                                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchText">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,10 @@
                             <!-- template statico -->
                             <div class="contacts">
 
-                                <div v-for="(contact,index) in contacts" class="item-contact padding-lateral" :key="index" :class="{'active': currentIndex === index}" @click="selectChat(index)">
+                                <div v-for="(contact,index) in contattiFiltrati" class="item-contact padding-lateral" :key="contact.id" :class="{'active': contact.id === currentIndex+1}" @click="selectChat(contact.id)">
+                                    <div v-if="contact.visible">
+
+                                    </div>
                                     <div class="item-image">
                                         <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="">
                                     </div>
