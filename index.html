@@ -52,12 +52,13 @@
                             </div>
                             <div class="nav-down">
                                 <div class="input-left">
-                                    <div class="input-left-content">
+                                    <!-- <div class="input-left-content">
                                         <input type="text">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </div>
+                                        
+                                    </div> -->
                                 </div>
                                 <div class="input-right">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
                                     <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchText">
                                 </div>
                             </div>
@@ -69,9 +70,7 @@
                             <div class="contacts">
 
                                 <div v-for="(contact,index) in contattiFiltrati" class="item-contact padding-lateral" :key="contact.id" :class="{'active': contact.id === currentIndex+1}" @click="selectChat(contact.id)">
-                                    <div v-if="contact.visible">
-
-                                    </div>
+                                    
                                     <div class="item-image">
                                         <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="">
                                     </div>
@@ -80,7 +79,7 @@
                                             <h3>{{contact.name}}</h3>
                                         </div>
                                         <div class="profile-message">
-                                            <span>Ultimo messaggio inviato</span>
+                                            <span>{{contacts[currentIndex].messages[contacts[currentIndex].messages.length - 1].message}}</span>
                                         </div>
                                     </div>
                                     <div class="profile-time">
@@ -102,7 +101,7 @@
                             <div class="profile-name">
                                 <div :key="index" class="name">{{contacts[currentIndex].name}}</div>
                                 <div class="ultimo-accesso">
-                                    <span>ultimo accesso oggi alle 12.00</span>
+                                    <span>ultimo accesso oggi alle: {{contacts[currentIndex].messages[contacts[currentIndex].messages.length - 1].date}}</span>
                                 </div>
                             </div>
                         </div>

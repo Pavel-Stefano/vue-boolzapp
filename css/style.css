@@ -19,11 +19,13 @@ box-sizing: border-box;
 header {
     background-color: green;
     height: 17%;
+    min-height: 75px;
 }
 
 main {
     height: calc(100% - 17%);
     background-color: grey;
+    min-height: 500px;
 }
 /*  CONTENITORE */
 main #main-container-content {
@@ -86,6 +88,7 @@ main #main-container-content {
 .main-nav-content {
     height: 15%;
     background-color: lightgrey;
+    min-height: 78px;
 }
 
 /* NAV TOP */
@@ -125,38 +128,40 @@ main #main-container-content {
     color: grey;
 }
 
-.nav-down .input-left {
+/* .nav-down .input-left {
     width: 20%;
-}
+} */
 
-.nav-down .input-left-content {
+/* .nav-down .input-left-content {
     position: relative;
-}
+} */
 
-.input-left-content i{
-    position: relative;
+.input-right i{
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /* left: 8px; */
+    transform: translatey(-50%);
+
+    border-right: 1px solid black;
+    padding: 0 10px;
 }
 
 
-.input-left input {
+.input-right input {
     width: 100%;
+    padding-left: 40px;
+    height: 30px;
 }
 
 .nav-down .input-right {
     width: 100%;
+    position: relative;
 }
 
-.input-right input {
-    width: 100%;
-}
 
 /* MAIN WRAPPER CONTACTS*/
 .main-wrapper-content {
-    height: calc(100% - 15%);
+    height: calc(100% - 123px);
     overflow-y: scroll;
     background-color: white;
 }
@@ -169,6 +174,7 @@ main #main-container-content {
     height: calc(100% / 9);
     display: flex;
     gap: 10px;
+    min-height: 50px;
 }
 
 .item-contact.active {
@@ -177,6 +183,7 @@ main #main-container-content {
 
 .item-contact .item-profile {
     width: 100%;
+    overflow: hidden;
 }
 
 .item-contact .item-image {
