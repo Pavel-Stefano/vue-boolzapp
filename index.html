@@ -79,11 +79,11 @@
                                             <h3>{{contact.name}}</h3>
                                         </div>
                                         <div class="profile-message">
-                                            <span>{{contacts[currentIndex].messages[contacts[currentIndex].messages.length - 1].message}}</span>
+                                            <span>{{contact.messages[contact.messages.length - 1].message}}</span>
                                         </div>
                                     </div>
                                     <div class="profile-time">
-                                        12.00
+                                        {{contact.messages[contact.messages.length - 1].date.slice(11,16)}}
                                     </div>
                                 </div>             
                             </div>  

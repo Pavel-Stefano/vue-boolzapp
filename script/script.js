@@ -179,16 +179,22 @@ const app = new Vue({
         selectChat(id){
             const index = this.contacts.findIndex((contact)=> {
                 return contact.id === id;
+                
             })
             this.currentIndex = index;
         },
         inviaMessaggio(){
-            if(this.message === '' || ' ') return
+            if(this.message === '' || this.message === ' ') return
             const newMessagge = {
                 date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         message: this.message,
                         status: 'sent'
             }
+
+            /*const lastIndex = this.contacts[this.currentIndex].messages.length - 1;
+            const lastMessage = this.contacts[this.currentIndex].messages[lastIndex];*/
+
+
             this.contacts[this.currentIndex].messages.push(newMessagge);
             this.message = '';
             const rispostaMessage = {
