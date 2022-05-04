@@ -69,7 +69,7 @@
                             <!-- template statico -->
                             <div class="contacts">
 
-                                <div v-for="(contact,index) in contattiFiltrati" class="item-contact padding-lateral" :key="contact.id" :class="{'active': contact.id === currentIndex+1}" @click="selectChat(contact.id)">
+                                <div v-for="(contact,index) in contattiFiltrati" class="item-contact padding-lateral pointer" :key="contact.id" :class="{'active': contact.id === currentIndex+1}" @click="selectChat(contact.id)">
                                     
                                     <div class="item-image">
                                         <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="">
@@ -114,10 +114,17 @@
 
                     <!-- MAIN CONTENT MESSAGE -->
                     <div class="main-content-right">
-                            <div class="messaggio" v-for="(item, index) in contacts[currentIndex].messages" :key="index" :class="item.status === 'sent' ? 'messaggio-inviato' : 'messaggio-ricevuto'">
-                                <span>{{item.message}}</span>
-                                <span class="date">{{item.date}}</span>
+                            <div class="messaggio" v-for="(messaggio, index) in contacts[currentIndex]?.messages" :key="index" :class="messaggio.status === 'sent' ? 'messaggio-inviato' : 'messaggio-ricevuto'">
+                                <span>{{messaggio.message}}</span>
+                                <span class="date">{{messaggio.date}}</span>
+                                <i class="fa-solid fa-check" @click="dropDownMenu(currentIndex, index)"></i>
+                                    <ul class="drop-down debug" :class="{'d-block' : messaggio.display}">
+                                        <li>Elimina Chat</li>
+                                        <li>Elimina Chat</li>
+                                        <li>Elimina Chat</li>
+                                    </ul>
                             </div>
+                            
                     </div>
 
                     <!-- FOOTER RIGHT -->
